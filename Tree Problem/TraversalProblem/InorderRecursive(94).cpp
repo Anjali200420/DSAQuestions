@@ -20,10 +20,37 @@ private:
     }
 
 public:
-    vector<int> inorderTraversal(TreeNode* root) {
-        vector<int> inorder;
+    // vector<int> inorderTraversal(TreeNode* root) {
+    //     vector<int> inorder;
 
-        fun(root, inorder);
+    //     fun(root, inorder);
+    //     return inorder;
+    // }
+
+    vector<int> inorderTraversal(TreeNode* root) {
+        if(root == NULL) return {};
+
+        vector<int> inorder;
+        stack<TreeNode*> st;
+
+        TreeNode* node = root;
+        
+        while(true){
+            if(node){
+                st.push(node);
+                node = node -> left;
+            }
+            else{
+                if(st.empty()) break;
+
+                node = st.top();
+                st.pop();
+                inorder.push_back(node -> val);
+
+                node = node -> right;
+            }
+        }
+
         return inorder;
     }
 };
