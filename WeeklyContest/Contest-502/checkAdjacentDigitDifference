@@ -1,0 +1,10 @@
+class Solution {
+public:
+    bool isAdjacentDiffAtMostTwo(string s) {
+        for(int ind = 0; ind < s.length() - 1; ind++){
+            if(abs(s[ind] - s[ind+1]) > 2) return false;
+        }
+
+        return true;
+    }
+};

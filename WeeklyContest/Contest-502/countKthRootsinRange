@@ -1,0 +1,18 @@
+class Solution {
+private:
+    int binarySearch(int low, int high, int k, int searchArea){
+        while(low <= high){
+            int mid = (low + high) / 2;
+
+            if(pow(mid, k) <= searchArea) low = mid + 1;
+            else high = mid - 1;
+        }
+
+        return low;
+    }
+    
+public:
+    int countKthRoots(int l, int r, int k) {
+        return binarySearch(0, r, k, r) - binarySearch(0, l-1, k, l-1);
+    }
+};
